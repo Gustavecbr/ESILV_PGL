@@ -1,2 +1,8 @@
-# ESILV_PGL
-cours de Python Git Linux
+# TD1 
+
+## Exercice 1
+
+#### Question 1: 
+``` 
+cd/ 
+``` 
