@@ -1,4 +1,4 @@
-# TD1_1
+# TD1
 
 ## Exercice 1 : Move around
 
@@ -148,5 +148,66 @@ chmod +x script_1.sh
 ./script_1.sh
 ```
 
+
+# TD3
+
+## Exercise 1: Grep and awk on tabular data
+
+#### Question 1: Display the list of files and folders at the root using ls -l
+```
+ls -l /
+```
+
+#### Question 2: In a pipeline (using |), append a grep instruction to only display informations of bin
+```
+ls -l / | grep "bin"
+```
+
+#### Question 3: Append an awk instruction to only display the size of bin
+```
+ls -l / | grep "bin" | awk '{print $5}'
+```
+
+#### Question 4: Now rather extract the month, day and year of creation of the folder bin
+```
+ls -ld /bin | awk '{print $6, $7, $8}'
+```
+
+#### Question 5: Now rearrange the instruction to get the following output format : 2020-Oct-26 (from original data : Oct 26 2020)
+```
+ls -ld --time-style=long-iso /bin | awk '{print $6}' | sed 's/-/ /2; s/-/ /2'
+```
+
+## Exercise 2: Grep with Regex, and sed on unstructured data
+#### Question 1: Run the following command : curl https ://en.wikipedia.org/wiki/List_of_cyberattacks > cyberattacks.txt
+```
+curl https://en.wikipedia.org/wiki/List_of_cyberattacks > cyberattacks.txt
+```
+
+#### Question 2: Use grep to extract all the lines that contain the keyword "meta"
+```
+grep "meta" cyberattacks.txt
+```
+
+#### Question 3: Now only extract "meta" and the first following word. You might use grep options to enable the use of regex (Regular Expressions) 
+```
+grep -o "meta [a-zA-Z]*" cyberattacks.txt
+```
+
+#### Question 4: Only extract the following word (but not the keyword "meta")
+```
+grep -o "meta [a-zA-Z]*" cyberattacks.txt | awk '{print $2}'
+```
+
+#### Question 5: Let’s now try more interesting (yet complex) patterns
+```
+cat cyberattacks.txt | grep -A1 'mw-content-text' | grep -v 'mw-content-text'
+```
+
+#### Question 6: Your turn: - Extract the tab title - Make a list of cyber attacks based on section titles
+```
+cat cyberattacks.txt | grep -o "<title>.*</title>" | sed 's/<title>//; s/<\/title>//'
+cat cyberattacks.txt | grep "^<h2>" | sed 's/<h2>//; s/<\/h2>//'
+```
 
 
