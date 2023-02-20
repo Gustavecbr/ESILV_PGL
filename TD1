@@ -147,3 +147,118 @@ cat script_1.sh
 chmod +x script_1.sh
 ./script_1.sh
 ```
+
+## Exercise 4: Accessing or modifying a file : permissions and root privilege
+### Exercise 4.1: Change the rights for accessing or modifying a file
+#### Quesion 1: Create a file credentials in the folder linux_ex_1
+```
+touch credentials
+```
+##### (a) Write any kind of (fake) personal information within the file
+```
+echo "Gustave" > credentials
+echo "Cabirou" >> credentials
+```
+##### (b) Display the file content
+```
+cat credentials
+```
+##### (c) Display the current permissions
+```
+ls -l credentials
+```
+#### Question 2: Change the current permissions to : read only for all users
+```
+chmod a=r credentials
+chmod u=r,g=r,o=r credentials
+chmod 555 credentials
+```
+##### (a) Display the new permissions
+```
+ls -l credentials
+```
+##### (b) Modify and save the file
+```
+:wq
+```
+##### (c) Display the file content
+```
+cat credentials
+```
+#### Question 3: Change the permissions back to read and write for all users
+```
+chmod a=rw credentials
+```
+##### (a) Display the new permissions
+```
+ls -l credentials
+```
+##### (b) Modify and save the file
+```
+//
+```
+##### (c) Display the file content
+```
+cat credentials
+```
+### Question Bonus: On the same file :
+#### Question 1: Add the execute permission to the owner
+```
+chmod a=rwx credentials
+```
+##### (a) Display the new permissions
+```
+//
+```
+#### Question 2: Remove the read permission to other users
+```
+chmod 700 credentials
+```
+##### (a) Display the new permissions
+```
+ls -l credentials
+```
+#### Question 3: Change the permissions to read, write and execute for all users
+```
+chmod 777 credentials
+```
+##### (a) Display the new permissions
+```
+ls -l credentials
+```
+### Exercise 4:.2 Access root files
+#### Question 1: Go to the root folder
+```
+cd /
+```
+#### Question 2: Create a file in root user mode named .private_file
+```
+sudo vim .private_file
+```
+##### (a) Write some information in the file
+```
+echo "Private Info" > .private_file
+```
+##### (b) Display the file content
+```
+cat .private_file
+```
+##### (c) Display all the files in the folder including hidden files
+```
+ls -a
+```
+#### Question 3: Modify the file in normal user mode
+##### (a) Write some new information in the file
+```
+vi .private_file
+```
+##### (b) Display the file content
+```
+cat .private_file
+```
+
+### Exercise 4:.3 Change a file owner
+```
+sudo chown ubuntu super 
+sudo chmod 744 super
+```
