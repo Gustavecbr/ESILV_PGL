@@ -1,0 +1,38 @@
+# TD4
+
+## Exercise 1: SSH
+#### Question 1: Create an account on a cloud computing platform (AWS, Azure, GoogleCloud, IBM Cloud)
+```
+```
+#### Question 2: Create a server instance on the website of your cloud platform (ec2 for AWS, Standard B1s for Azure)
+```
+```
+#### Question 3: Connect to the distant server via your terminal
+```
+```
+#### Question 4: Create a script named connect.sh to automatically connect to the remote instance
+```
+```
+#### Question 5: Run the script to check it is working properly. Then exit to return to your local machine.
+```
+```
+#### Question 6: Rename your private key to make it a hidden file. Propagate the changes to your script. Run the script.
+```
+```
+
+## Exercise 2: SCP
+#### Question 1: On your local machine create a file named test_to_remote_instance.txt
+```
+```
+#### Question 2: Connect to your remote instance and create a file named test_from_remote_instance.txt. Then exit
+```
+```
+#### Question 3: Use the scp command 
+```
+```
+#### Question 4: Create two scripts, your scripts should use the path of the file to send / receive as an argument
+```
+```
+#### Question 5: Test your scripts with varying files
+```
+```
