@@ -149,6 +149,129 @@ chmod +x script_1.sh
 ```
 
 
+
+
+
+
+# TD 2
+
+## Exercise 1:  Access general computer informations
+
+#### Question 1:  Put system up to date
+```
+sudo apt update && sudo apt upgrade
+```
+#### Question 2:  Display
+```
+uname -a
+top
+nproc
+lscpu
+df -h
+mount
+lsusb
+hostname
+```
+
+## Exercise 2:  Shell - Variables and scripts scope
+
+#### Question 1: Create a variable x and assign it the short text piri pimpin
+```
+x="piri pimpin"
+```
+#### Question 2: Display the value of this variable
+```
+echo $x
+```
+#### Question 3: Add to this value the following text piri pimpon
+```
+x+=" piri pimpon"
+```
+#### Question 4: Create a folder named my_programs, then enter into that folder
+```
+mkdir my_programs
+cd my_programs
+```
+#### Question 5: Create a script named pilou that displays pilou pilou
+```
+touch pilou.sh
+nano pilou.sh
+echo "pilou pilou"
+crtl x
+```
+#### Question 6: Run this script
+```
+./pilou
+```
+#### Question 7: Make this script executable
+```
+chmod +x pilou.sh
+```
+#### Question 8: Run the script by writting its name only
+```
+./pilou
+```
+#### Question 9: Programs called from the terminal are usually found thanks to a variable named PATH
+```
+echo $PATH
+```
+#### Question 10: Add the path of your current location to the global variable PATH
+```
+export PATH=$PATH:$(pwd)
+```
+#### Question 11: When you are sure of the result, export it
+```
+export PATH
+```
+#### Question 12: Go to your home directory
+```
+cd ~
+```
+#### Question 13: Run your script by writting its name only
+```
+pilou.sh
+```
+#### Question 14: Change the value of the PATH in the .profile file in order to make it permanent
+```
+???
+"export PATH=$PATH:/path/to/my_programs"
+```
+#### Question 15: Create a new shell and run your script using its name only
+```
+???
+"pilou"
+```
+
+
+## Exercise 3
+
+#### Question 1:  Create a script say_hello.sh
+```
+touch say_hello.sh
+touch hellos.txt
+vim pilou.sh
+message="$(date) - Hello"
+echo "$message" >> hellos.txt
+:wq
+chmod +x say_hello.sh
+crontab -e
+* * * * * /path/to/say_hello.sh
+```
+#### Question 2: Make the script executable
+```
+cat script_1.sh
+```
+#### Question 3: Use crontab to schedule the running of the script every minute
+```
+chmod +x script_1.sh
+./script_1.sh
+```
+
+
+
+
+
+
 # TD3
 
 ## Exercise 1: Grep and awk on tabular data
