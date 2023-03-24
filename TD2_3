@@ -1,1 +1,30 @@
+# TD2_3
 
+## Exercice 1 : Extract data from a website
+
+#### Question 1: curl
+``` 
+curl https://opendomesday.org/api/1.0/county/
+curl https://opendomesday.org/api/1.0/place/2346/
+curl https://opendomesday.org/api/1.0/manor/181/
+``` 
+
+#### Question 2: curl and grep
+```
+curl https://opendomesday.org/api/1.0/county/Derbyshire/place/ | grep -Eo '"id": [0-9]+' | awk '{print $2}'
+```
+
+#### Question 3: curl, grep and for
+```
+for place_id in $(curl https://opendomesday.org/api/1.0/county/Derbyshire/place/ | grep -Eo '"id": [0-9]+' | awk '{print $2}'); do curl https://opendomesday.org/api/1.0/place/$place_id/manor/ >> raw_data.txt; done
+```
+
+#### Question 4: curl, grep, for and sed
+```
+for place_id in $(curl https://opendomesday.org/api/1.0/county/Derbyshire/place/ | grep -Eo '"id": [0-9]+' | awk '{print $2}'); do curl https://opendomesday.org/api/1.0/place/$place_id/manor/ | grep -Eo '"geld": [0-9]+| "ploughs": [0-9]+' | sed 's/"geld": //g; s/"ploughs": //g; N;s/\n/,/'; done > data.csv
+```
+
+#### Question 5: discover new commands:
+```
+awk -F
+```
