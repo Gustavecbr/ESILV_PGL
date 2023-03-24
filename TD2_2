@@ -1,38 +1,63 @@
-# TD4
+# TD2_2
 
 ## Exercise 1: SSH
 #### Question 1: Create an account on a cloud computing platform (AWS, Azure, GoogleCloud, IBM Cloud)
 ```
+done
 ```
 #### Question 2: Create a server instance on the website of your cloud platform (ec2 for AWS, Standard B1s for Azure)
 ```
+done
 ```
 #### Question 3: Connect to the distant server via your terminal
 ```
+chmod 400 path/to/private/key/file
+ssh -i path/to/private/key/file ec2-user@54.88.50.122
+exit
 ```
 #### Question 4: Create a script named connect.sh to automatically connect to the remote instance
 ```
+nano connect.sh
+chmod 400 path/to/private/key/file
+ssh -i path/to/private/key/file ec2-user@54.88.50.122
 ```
 #### Question 5: Run the script to check it is working properly. Then exit to return to your local machine.
 ```
+bash connect.sh
+exit
 ```
 #### Question 6: Rename your private key to make it a hidden file. Propagate the changes to your script. Run the script.
 ```
+mv path/to/private/key/file ./.private_key
+nano connect.sh
+chmod 400 ./.private_key
+ssh -i ./.private_key ec2-user@54.88.50.122
+bash connect.sh
 ```
 
 ## Exercise 2: SCP
 #### Question 1: On your local machine create a file named test_to_remote_instance.txt
 ```
+touch test_to_remote_instance.txt
 ```
 #### Question 2: Connect to your remote instance and create a file named test_from_remote_instance.txt. Then exit
 ```
+ssh -i path/to/private/key/file ec2-user@54.88.50.122
+touch /Test_Python_Git_Linux/test_from_remote_instance.txt
+exit
 ```
 #### Question 3: Use the scp command 
 ```
+scp -i path/to/private/key/file path/to/local/file ec2-user@54.88.50.122:/Test_Python_Git_Linux/
+scp -i path/to/private/key/file ec2-user@54.88.50.122:/Test_Python_Git_Linux/test_from_remote_instance.txt /path/to/local/directory
 ```
 #### Question 4: Create two scripts, your scripts should use the path of the file to send / receive as an argument
 ```
+nano scp_to_remote_instance.s
+scp -i path/to/private/key/file "$1" ec2-user@54.88.50.122:/Test_Python_Git_Linux/
 ```
 #### Question 5: Test your scripts with varying files
 ```
+bash scp_to_remote_instance.sh path/to/local/file/to/send
+bash scp_from_remote_instance.sh /Test_Python_Git_Linux/file/to/receive
 ```
