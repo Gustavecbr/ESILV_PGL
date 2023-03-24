@@ -1,0 +1,384 @@
+# TD3 
+
+## Exercise 1: Configure Git
+#### Question 1. Check that Git is installed on your environment.
+'''
+git --version
+'''
+#### Question 2. Configure your name and e-mail globally.
+'''
+git config --global user.name "Gustave"
+git config --global user.email "gustave.cabirou@edu.devinci.fr"
+
+'''
+#### Question 3. Check that Git has correctly recorded these two pieces of information.
+'''
+git config --list
+'''
+
+## Exercise 2: Basic workflow with a single file
+#### Question 1. Create a git repository
+'''
+git init
+'''
+#### Question 2. Check that git has correctly initiliazed a repository by displaying the files wihtin your current folder
+'''
+ls -la
+'''
+#### Question 3. Check the current git status
+'''
+git status
+'''
+#### Question 4. Create a text file named “readme.md” whose content is “# Test repository”
+'''
+echo "# Test repository" > readme.md
+'''
+#### Question 5. Check the current git status
+'''
+git status
+'''
+#### Question 6. Stage the file
+'''
+git add readme.md
+'''
+#### Question 7. Check the current git status
+'''
+git status
+'''
+#### Question 8. Commit the file
+'''
+git commit -m "Add readme file"
+'''
+#### Question 9. Check the current git status
+'''
+git status
+'''
+#### QUestion 10. Check the git logs
+'''
+git log
+'''
+#### QUestion 11. Which informations are displayed ?
+The Git logs display the commit ID, author, date, and commit message.
+
+## Exercise 3: Basic workflow with multiple files treated separately
+#### Question 1. Create two empty python files named “main.py” and “functions.py”
+'''
+touch main.py functions.py
+'''
+#### QUestion 2. Check the current git status
+'''
+git status
+'''
+#### Question 3. Stage only the file “main.py”
+'''
+git add main.py
+'''
+#### Question 4. Check the current git status
+'''
+git status
+'''
+#### Question 5. Commit the file with an appropriate message
+'''
+git commit -m "Add main.py file"
+'''
+#### Question 6. Check the current git status
+'''
+git status
+'''
+#### Question 7. Now stage and commit the file “functions.py”
+'''
+git add functions.py
+git commit -m "Add functions.py file"
+'''
+#### Question 8. Check the current git status
+'''
+git status
+'''
+#### Question 9. Check the git logs
+'''
+git log
+'''
+
+## Exercise 4: Basic workflow with multiple files treated all at once
+#### Question 1. Create three empty files named “requirements.txt”, “.gitignore” and “.private”
+'''
+touch requirements.txt .gitignore .private
+'''
+#### Question 2. Check the current git status
+'''
+git status
+'''
+#### Question 3. Stage all the files at once
+'''
+git add .
+'''
+#### Question 4. Check the current git status
+'''
+git status
+'''
+#### Question 5. Commit the current staged files
+'''
+git commit -m "Add requirements, gitignore and private files"
+'''
+#### Question 6. Check the current git status
+'''
+git status
+'''
+#### Question 7. Check the git logs where each log is displayed on a single line
+'''
+git log --oneline
+'''
+
+## Exercise 5: Private files
+#### Question 1. Emulate a temporary empty file by creating a file named “temp.ipynb”
+'''
+touch temp.ipynb
+'''
+#### Question 2. Check the current git status
+'''
+git status
+'''
+#### Question 3. Add an instruction to .gitignore to prevent git from tracking this temp file
+'''
+echo "temp.ipynb" >> .gitignore
+'''
+#### Question 4. Check the current git status
+'''
+git status
+'''
+#### Question 5. Create other temporary files named “temp.aux” and “temp.log”
+'''
+touch temp.aux temp.log
+'''
+#### Question 6. Check the current git status
+'''
+git status
+'''
+#### Question 7. Change your instruction in .gitignore to prevent git from tracking any file which name starts with “temp”
+'''
+echo "temp*" >> .gitignore
+'''
+#### Question 8. Check the current git status
+'''
+git status
+'''
+#### Question 9. Now let’s consider your personal notes will be added to the “.private” folder. Use the “exclude” git file to prevent git from tracking this “.private” folder
+'''
+echo ".private/" >> .git/info/exclude
+'''
+
+## Exercise 6: Difference between versions
+#### Question 1. Add a online description of your repository in the “readme.md” file
+'''
+echo "# My Test Repository" > readme.md
+'''
+#### Question 2. Stage your “readme.md” file
+'''
+git add readme.md
+'''
+#### Question 3. Display the changes in your root directory since the last commit (not just the current status)
+'''
+git diff HEAD
+'''
+#### Question 4. Commit your change
+'''
+git commit -m "Add description to readme"
+'''
+#### Question 5. Display the changes since the last commit
+'''
+git diff HEAD^
+'''
+#### Question 6. Display again the changes in your root directory since the last commit
+'''
+git diff HEAD^
+'''
+#### Question 7. Change some words in the description of the “readme.md”
+'''
+echo "# My Awesome Test Repository" > readme.md
+'''
+#### Question 8. Display the changes since the last commit
+'''
+git diff HEAD
+'''
+
+## Exercise 7: Undo
+#### Question 1. Suppress all your files.
+'''
+rm *
+'''
+#### Question 2. Use Git to restore your files.
+'''
+git restore .
+'''
+#### Question 3. Backup your Git repository elsewhere (pretending a copy exists on another colleague’s computer or on a remote server).
+'''
+git clone /path/to/local/repository /path/to/backup/location
+'''
+#### Question 4. Suppress your root directory, create a new empty one and use your backup to restore everything.
+'''
+rm -rf /path/to/local/repository
+mkdir /path/to/local/repository
+cp -r /path/to/backup/directory/* /path/to/local/repository
+'''
+#### Question 5. Unstage your first file
+'''
+git reset HEAD <filename>
+'''
+#### Question 6. Commit your two file changes directly, without staging them.
+'''
+git commit -am "commit message"
+'''
+#### Question 7. Check your commit log history. Do you see your new commit ?
+'''
+git log
+'''
+#### Question 8. Without affecting your Git repository, set your root directory state as of the snapshot of your first commit.
+'''
+git checkout <commit hash>
+'''
+#### Question 9. Check your commit log history. You do not see all commits, do you ? How can you see all of them ?
+'''
+git log --all
+'''
+#### Question 10. Return to the snapshot of your your last commit.
+'''
+git checkout <last commit hash>
+'''
+#### Question 11. Undo your second commit by adding a new commit that reverts it.
+'''
+git revert <second commit hash>
+'''
+#### Question 12. Check the content of your root directory. Have your previous changes disappeard ?
+'''
+ls
+'''
+#### Question 13. Check your commit log history. Do you see your revert commit ?
+'''
+git log
+'''
+#### Question 14. Remove the last 2 commits from the history.
+'''
+git reset HEAD~2
+'''
+#### Question 15. Check the content of your root directory. Have your previous changes disappeard ?
+'''
+ls
+'''
+#### Question 16. Check your commit log history. Have you lost the last 2 commits ?
+'''
+git log
+'''
+
+## Exercise 8: Aliases
+#### Question 1. Create a “s” alias for the git status command.
+'''
+git config --global alias.s status
+'''
+#### Question 2. Create a “co” alias for the git checkout command.
+'''
+git config --global alias.co checkout
+'''
+#### Question 3. Create a “b” alias for the git branch command.
+'''
+git config --global alias.b branch
+'''
+#### Question 4. Create a “ci” alias for the git commit command.
+'''
+git config --global alias.ci commit
+'''
+#### Question 5. Create a “dog” alias for the git log –all –decorate –oneline –graph command.
+'''
+git config --global alias.dog "log --all --decorate --oneline --graph"
+'''
+#### Question 6. Create a “dag” alias for the git log –all –decorate –graph command.
+'''
+git config --global alias.dag "log --all --decorate --graph"
+'''
+#### Question 7. Create a “list” alias for the git diff-tree –no-commit-id –name-only -r command.
+'''
+git config --global alias.list "diff-tree --no-commit-id --name-only -r"
+'''
+#### Question 8. Create a “unstage” alias for the git reset HEAD – command.
+'''
+git config --global alias.unstage "reset HEAD --"
+'''
+#### Question 9. Create a “last” alias for the git log -1 HEAD command.
+'''
+git config --global alias.last "log -1 HEAD"
+'''
+
+## Exercise 9: Hashing
+#### Question 1. Create a root directory.
+'''
+mkdir hash_dir
+'''
+#### Question 2. Create a text file inside whose content is “Hello World”.
+'''
+echo "Hello World" > hash_file.txt
+'''
+#### Question 3. What is the size of the file ?
+'''
+ls -lh hash_file.txt
+'''
+#### Question 4. Display the file content on the screen.
+'''
+cat hash_file.txt
+'''
+#### Question 5. Compute the SHA-1 hash of the file content.
+'''
+sha1sum hash_file.txt
+'''
+#### Question 6. What hash would Git compute on this file ?
+'''
+git hash-object hash_file.txt
+'''
+#### Question 7. Create a second file whose content is what Git would really consider when saving your first file.
+'''
+echo -e "blob $(stat -c %s hash_file.txt)\0$(cat hash_file.txt)" > git_hash_file.txt
+'''
+#### Question 8. Compute the SHA-1 hash of this second file and check it is equal to the Git hash of your first file.
+'''
+sha1sum git_hash_file.txt
+git hash-object git_hash_file.txt
+'''
+
+## Exercise 10: Compressing
+#### Question 1. Create an empty Git repository in your root directory (if you have accidentally already created a Git repository in your root directory, delete it before).
+'''
+cd ..
+mkdir git_compress
+cd git_compress
+git init
+'''
+#### Question 2. Check that Git is aware of your 2 files but does not track them yet.
+'''
+git status
+'''
+#### Question 3. Check that no object is stored yet in the objects subdirectory of your Git repository.
+'''
+ls .git/objects
+'''
+#### Question 4. Create a directory inside the objects subdirectory of your Git repository, whose name is the first two characters of the SHA-1 hash computed in the previous exercise.
+'''
+mkdir .git/objects/27
+'''
+#### Question 5. Install the QPDF free command-line program. Part of this program is the zlib-flate command that compress and uncompress files using the deflate algorithm.
+'''
+sudo apt-get install qpdf
+'''
+#### Question 6. Create a file inside the directory that you have just created, whose content is the deflate compression (level 1) of your second file and whose name is the last 38 characters of the SHA-1 hash computed in the previous exercise.
+'''
+echo -n $(cat git_hash_file.txt) | gzip -1 > .git/objects/27/$(git hash-object -w --stdin < git_hash_file.txt | cut -c3-).gz
+'''
+#### Question 7. Check that Git successfully considers this file as one of its inner object.
+'''
+git cat-file -p $(git hash-object -w --stdin < git_hash_file.txt)
+'''
+#### Question 8. Backup your Git repository and create a new one.
+'''
+cd ..
+cp -r git_compress git_compress_backup
+cd git_compress
+rm -rf .git
+git init
+'''
