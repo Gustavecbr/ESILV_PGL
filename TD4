@@ -1,0 +1,80 @@
+# TD4
+
+## Exercise 1: Clone a Git repository
+#### Question 1. Choose the repository created on GitHub or GitLab by one of your teammates, share its web URL.
+'''
+
+'''
+#### Question 2. For the repository owner... Ensure there is at least a README.md file, it appears on the project frontpage in the web UI.
+'''
+
+'''
+#### Question 3. Using only command-line in your Linux shell, clone it to a local repository.
+'''
+
+'''
+#### Question 4. For the repository owner... Give push rights to your teammates :
+'''
+
+'''
+
+## Exercise 2: Push files to common repository
+#### Question 1. Create a branch named after you.
+'''
+git checkout -b <your_branch_name>
+'''
+#### Question 2. Create a new text file named after you (with the content you want).
+'''
+touch <your_file_name>
+'''
+#### Question 3. Commit this new file.
+'''
+git add <your_file_name>
+'''
+#### Question4. Push your branch to the remote repository.
+'''
+git commit -m "<commit_message>"
+git push -u origin <your_branch_name>
+'''
+
+## Exercise 3: Merge simple changes
+#### Question 1. Merge your branch into the ’master’ branch.
+'''
+git checkout master
+git merge <your_branch_name>
+'''
+#### Question 2. Push your changes in the ’master’ branch to the remote repository.
+'''
+git push origin master
+'''
+
+## Exercise 4: Resolve merge conflicts
+#### Question 1. Switch back to your own branch (not including the latest changes from the master branch).
+'''
+git checkout <your_branch_name>
+'''
+#### Question 2. Edit the lines 2 to 6 of the README.md file with a text you like (a poem, a quote, some clever code...). It can be any readable text, it may be incomplete, it must just take about 5 lines and be different from your teammates. It must start on line 2 to trigger conflicts between team members.
+'''
+nano README.md
+'''
+#### Question 3. Commit this change.
+'''
+git add README.md
+'''
+#### Question 4. Pull latest status from the remote repository ’master’ branch into your local ’master’ branch.
+'''
+git commit -m "<commit_message>"
+'''
+#### Question 5. Merge your branch into the local ’master’ branch.
+'''
+git checkout master
+'''
+#### Question 6. If there are conflicts, we want the paragraph to appear in alphabetical order in the final README.md file.
+'''
+git pull origin master
+'''
+#### Question 7. Push your changes in the ’master’ branch to the remote repository.
+'''
+git merge
+'''
+
